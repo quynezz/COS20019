@@ -1,0 +1,61 @@
+- Cloutrail: Quản lí lịch sử truy cập ( API request ) storage, Lịch sử activity của AWS user  
+
+- Cloudwatch: Quản lí dữ liệu và các chỉ sô của các service, alarm và giúp manager monitor performance và health của các serverless functions và service, ví dụ: có quá nhiều lượt API truy cập,
+ Funtion invocation ( gọi hàm để chạy các function của Lambda), Amazon RDS ( database metrics, CPU Utilization) 
+
+- Route53: service này đóng vai trò là người phiên dịch tên miền DNS ( Domain Name Service )
+ví dụ: chuyển www.photoalbumn.com thành dãy Internet Protocol ( IPv6 ) và route người dùng đến trang webstatic 
+
+- Cloudfront: Content Delivery Network hoặc Distribution networks, có hai loại nội dụng: 
+Static ( tĩnh ) và Dynamic ( động ), Dynamic là nội dung của đầu vào ( người dùng sẽ nhập input )  
+CF là nơi dư trữ content được phân phối tới các EdgeLocation khác nhau, khi có request đến, Edge location sẽ
+trả về dữ liệu luôn nếu như dữ liệu cần thiết đang cache trên edgde location đó.( hiện tại Aws cung câp hơn 400+ edge location trên thế giới, 12+ Regional edge và việt nam có 2 EL đó là TP.HCM và Hà Nội giúp, độ latency đến 30%) 
+	
+- Aws Amplify: là service cho phép người dùng phát triển và build phần frontend hoàn chỉnh cho website ( các tool, thư viện .. ) 
+một vài ví dụ như Vue.js, React.js ... được phát triển và deploy trên amplify 
+
+-AWS SNS: Service cho phép gửi SMS push message, email, JWT... đến người dùng hoặc gửi đến các service khác.., trong serverless diagram, hai loại được xài đó chính là Standard Topics ( được dùng để 
+gửi các SMS authentication cho người dùng login hoặc sign up hoặc đổi mặt khẩu....) và FIFo( First-In-First-Out) ( được desgin để guarantee strict message theo thứ tự được sắp xếp, ví dụ fiancial transacion, mã số ID thông tin đặt hàng của E-commerce... ) 
+
+- AWS SQS: fully managed  message queue, cho phép người dùng decouple ( phân tách ) the components of distributed systems, cung cấp infrastructure reliable and scalable, ví dụ 
+ người dùng có thể decouple media processing và handle large volumn của photo và video upload effciently.
+
+-AWS Cognito: Đơn giản là một service cung cấp các hình thức authenticate người dùng ( sign-up, sign-in ) 
+và access control to your webstatic.  
+
+-JWT( Json web token ): chuyển đổi các thông tin giữa các json ( người dùng request một log-in API, web sẽ so sánh input data với 
+JSON dùng để authenticate users. 
+
+-AWS API gateway: đóng vai trò là frontdoor của back-end, cho phép manager securely expose API đến khách hàng ( PUSH, POST, DELETE... ) 
+
+-AWS Eventbridge: cho user dùng define các Event rules để trigger các actions, function hoặc workflows bên trong 1 event, có chức năng routing và processing 1 event serverlessly 
+
+-AWS Stepfunction: là một fully manage service Cho phép người dùng build và dàn xếp ( Orchestrate ) một serverless workflows. Mỗi step đại diện một hành động đặc biệt 
+được execute, từ đó thành một overall workflow cho state machine. 
+
+-AWS S3 Bucket ( Simple Storage Service ): Là một container for storing files ( Scalability: có thể chứa unlimited number của objects ) 
+
+-AWS Regkonition : Offers advanced image and video analysis capabilities ( khả năng ),  cung câp các chức năng như image ananylys, Facial recognition... mà không cân các thuật toán phức tạp 
+
+-AWS Lambda: cho phép người dùng chạy các code function mà không cần quản lý server, người dùng có thể execute code in response to events 
+và chỉ chả tiền cho thời gian mà lambda computing trong quá trình execute code.  
+
+-Elastic Transcoder: Is a media transcoding process, enable users to convert media files from one format to another, making them comatiple ( tương thích )  with various devices and platforms  
+
+-Dynamo Database: Is fully managed NoSQL database service, provide fast and scalable for app that require low-latency access to data.    
+
+
+- WAF: AWS WAF (Web Application Firewall) is a cloud-based firewall service provided by Amazon Web Services (AWS).
+ It helps protect web applications from common web exploits and malicious traffic by filtering and monitoring HTTP and HTTPS requests. 
+
+- InternetGateway:  horizontally scalable, highly available AWS service that allows communication between your Amazon Virtual Private Cloud (Amazon VPC) and the internet. It serves as a gateway for traffic to enter and leave your VPC. 
+
+-Auto Scaling Group: helps you automatically scale your compute resources, such as Amazon EC2 instances, based on demand. 
+It allows you to ensure that your applications have the right amount of resources available to handle varying levels of traffic or workload. 
+
+The load balancer evenly distributes traffic across multiple instances managed by the Auto Scaling group, ensuring that your application can handle varying levels of load, maintain high availability, and scale as needed. 
+- Load balancers regularly check the health of the registered targets (such as EC2 instances) to ensure that only healthy instances receive traffic. If an instance fails the health check, the load balancer automatically 
+stops sending traffic to it until it becomes healthy again.
+ 
+- For private instance to be able to communicate with the public internet, private Ip address, 
+need to be translated by NAT instance 
